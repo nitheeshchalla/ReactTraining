@@ -21,34 +21,61 @@ export const CarTool = (props) => {
         )); //Alternate to lines 11 to 15
     };
 
-     const deleteCar = (carId) => {     
-         setCars(cars.filter((e) => e.id !== carId));
-         setSelectedCarIds(selectedCarIds.filter(id => id !== carId));
-     };
+    const deleteCar = (carId) => {
+        setCars(cars.filter((e) => e.id !== carId));
+        setSelectedCarIds(selectedCarIds.filter(id => id !== carId));
+    };
 
-     const selectCar=(carId)=>{
-         if(selectedCarIds.includes(carId)){
+    const selectCar = (carId) => {
+        if (selectedCarIds.includes(carId)) {
             setSelectedCarIds(selectedCarIds.filter(id => id !== carId));
-         } else{
+        } else {
             setSelectedCarIds(selectedCarIds.concat(carId));
-         }
-     }
+        }
+    }
 
-     
-     const bulkDeleteCars=()=>{       
+    const editCar = (carId) => {
+        //  const newCarModel = {
+        //     ...car,
+        //     update: Math.max(...cars.map(x => x.id), 0) + 1
+        // };
+        // setCars(cars.concat({newCarModel}));
+
+
+        // this.setState({
+        //     data: this.state.data.map(el => (el.id === id ? {...el, text} : el))
+        //   });
+
+          setCars(cars.map(c => (c.id === carId ? {...c, update:true}:c)));
+
+    }
+
+    const change = (car) => {
+        //  const newCarModel = {
+        //     ...car,
+        //     update: Math.max(...cars.map(x => x.id), 0) + 1
+        // };
+        // setCars(cars.concat({newCarModel}));
+
+
+        // this.setState({
+        //     data: this.state.data.map(el => (el.id === id ? {...el, text} : el))
+        //   });
+
+         // setCars(cars.map(c => (c.id === carId ? {...c, update:true}:c)));
+
+    }
+
+    const bulkDeleteCars = () => {
         setCars(cars.filter(e => !selectedCarIds.includes(e.id)));
         setSelectedCarIds([]);
     }
 
     return (
         <>
-
             <ToolHeader headerText="Car Tool" />
             <CarForm buttonText="Add Car" onSubmitCar={addCar} />
-            <CarTable carData={cars} deleteCar={deleteCar} onSelectCar={selectCar} 
-            selectedCarIds={selectedCarIds}
-            onBulkDeleteCars={bulkDeleteCars}/>
-
+            <CarTable carData={cars} selectedCarIds={selectedCarIds} onDeleteCar={deleteCar} onSelectCar={selectCar} onBulkDeleteCars={bulkDeleteCars} onEditCar={editCar} onUpdate={change} />
         </>
     )
 };

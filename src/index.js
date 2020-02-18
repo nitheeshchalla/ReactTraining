@@ -20,8 +20,8 @@ import App from './App';
 
 const colorList=['blue', 'red', 'black', 'green'];
 const carList = [
-    {id:1, make:'Hyundai',model:'Elantra', year:2014, price:13000, color:'Beige'},
-    {id:2, make:'Cadillac',model:'Sevillie',  year:1999, price:2000, color:'Beige'}
+    {id:1, make:'Hyundai',model:'Elantra', year:2014, price:13000, color:'Beige', update: false},
+    {id:2, make:'Cadillac',model:'Sevillie',  year:1999, price:2000, color:'Beige', update: false}
 ];
 
 

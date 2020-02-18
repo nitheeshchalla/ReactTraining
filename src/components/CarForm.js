@@ -38,7 +38,7 @@ export const CarForm = ({onSubmitCar, buttonText}) => {
                 </div>
                 <div>
                     <label htmlFor="year-input">Year: </label>
-                    <input type="text" id="year-input" name="year" value={carForm.year} onChange={change} />
+                    <input type="number" id="year-input" name="year" value={carForm.year} onChange={change} />
                 </div>
                 <div>
                     <label htmlFor="color-input">Color: </label>
